@@ -1,4 +1,4 @@
-module todo
+module github.com/eklownr/go
 
 go 1.23.2
 
