@@ -6,8 +6,7 @@ import (
 	"log"
 	"os"
 	"strings"
-
-	"github.com/fatih/color"
+	//"github.com/fatih/color"
 )
 
 func main() {
