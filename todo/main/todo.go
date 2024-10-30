@@ -6,7 +6,9 @@ import (
 	"log"
 	"os"
 	"strings"
-	//"github.com/fatih/color"
+
+	// local pkg module
+	"github.com/fatih/color"
 )
 
 func main() {
