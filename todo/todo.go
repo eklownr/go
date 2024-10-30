@@ -81,6 +81,8 @@ func delTask(taskList []string, index int) []string {
 	for i, taskValue := range taskList {
 		if i != index {
 			buf = append(buf, taskValue)
+		} else {
+			fmt.Printf("Task %d: '%s' deleted \n", index+1, taskValue)
 		}
 	}
 	return buf
