@@ -7,7 +7,6 @@ import (
 	"os"
 	"strings"
 
-	// local pkg module
 	"github.com/fatih/color"
 )
 

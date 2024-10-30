@@ -1,4 +1,4 @@
-module github.com/eklownr/go
+module todohelper
 
 go 1.23.2
 
