@@ -95,10 +95,10 @@ func addTask(task []string, s string) []string {
 	return task
 }
 
-// fmt.println....
-func pl(s string) {
-	fmt.Println(s)
-}
+// // fmt.println....
+// func pl(s string) {
+// 	fmt.Println(s)
+// }
 
 func openFile(filename string) ([]string, error) {
 	f, err := os.Open(filename)
