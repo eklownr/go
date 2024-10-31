@@ -67,6 +67,7 @@ func readTodoFile(taskList []string) []string {
 	return taskList
 }
 
+// Print out tasklist
 func printTask(l []string) {
 	color.Yellow("\nList of my Todos:")
 	for index, item := range l {
@@ -95,11 +96,12 @@ func addTask(task []string, s string) []string {
 	return task
 }
 
-// // fmt.println....
-// func pl(s string) {
-// 	fmt.Println(s)
-// }
+// A lasy way to fmt.println....
+func pl(s string) {
+	fmt.Println(s)
+}
 
+// Open end return the content of "filename"
 func openFile(filename string) ([]string, error) {
 	f, err := os.Open(filename)
 	if err != nil {
@@ -118,6 +120,7 @@ func openFile(filename string) ([]string, error) {
 	return lines, nil
 }
 
+// func writeToFile use this func befor quiting App
 func saveFile(filename string, NewTaskList []string) error {
 	// Open the file in write mode
 	f, err := os.Create(filename)
@@ -138,6 +141,7 @@ func saveFile(filename string, NewTaskList []string) error {
 	return nil
 }
 
+// Write to file before quiting the App
 func writeToTodoFile(newTaskList []string, filename string) {
 	err := saveFile(filename, newTaskList)
 	if err != nil {
