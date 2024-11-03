@@ -36,27 +36,38 @@ func main() {
 		{2, 4.5},
 		{6, 6.7},
 	}
-	total_cost := getCostByDay(0, cost)
+	pl("Cost: %v\n", cost)
+	total_cost := getCostByDay(cost)
 
-	fmt.Printf("Total of cost %v: \n%f\n", cost, total_cost)
-
-	// pl(string, ...interface). Replace for fmt.Printf()
-	pl("total %v", total_cost)
-	pl("Testing int %v", 1234)
-	my_string := "Hello World"
-	pl("String and string: %v", my_string)
-	pl("Total of cost %v: \n%f\n", cost, total_cost)
-	pl("hello world!")
+	for i := 0; i < len(total_cost); i++ {
+		fmt.Printf("Day %d: %f\n", i+1, total_cost[i])
+	}
 }
 
 // cost is a 2D array, return total cost of day
-func getCostByDay(day int, cost [][]float64) float64 {
-	for i := 0; i < len(cost); i++ {
-		if cost[i][0] == float64(day) {
-			return cost[i][1]
+func getCostByDay(cost [][]float64) []float64 {
+	// get the last value of cost[value][]
+	days := cost[len(cost)-1][0] + 1
+	// sum[days]
+	sum := make([]float64, int(days))
+
+	for i := 0; i < int(days); i++ {
+		for j := 0; j < len(cost); j++ {
+			if int(cost[j][0]) == i {
+				sum[i] += cost[j][1]
+			}
 		}
 	}
-	return 0
+	return sum
+}
+
+// variadic ...
+func tot(num ...int) int {
+	total := 0
+	for i := 0; i < len(num); i++ {
+		total += num[i]
+	}
+	return total
 }
 
 // func pl(s string, value ...interface{}) {
@@ -85,13 +96,4 @@ func pl(s string, value ...interface{}) {
 		fmt.Printf(s, value[0], value[1], value[2], value[3])
 		fmt.Println()
 	}
-}
-
-// variadic ...
-func tot(num ...int) int {
-	total := 0
-	for i := 0; i < len(num); i++ {
-		total += num[i]
-	}
-	return total
 }
