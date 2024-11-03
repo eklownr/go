@@ -7,10 +7,13 @@ func main() {
 	slice357 := my_array[1:4]
 	my_slice := my_array[:]
 	fmt.Printf("copy array to slice: %v. \nslice[1:4] index 1 to index 3 %v\n", my_slice, slice357)
+	// Testing variadic function. tot()
+	fmt.Printf("Total of my_array %v: %d\n\n", my_array, tot(my_array[:]...))
 
 	slice_from_make := make([]int, 5)
 	fmt.Printf("The type of slice_from_make: %T \nThe value: %v \nCapacity: %v \n\n",
 		slice_from_make, slice_from_make, cap(slice_from_make))
+
 	matrix := make([][]int, 5)
 	//fmt.Printf("The type of matrix: %T \nThe value: %v \n", matrix, matrix)
 	matrix = [][]int{
@@ -27,8 +30,7 @@ func main() {
 	fmt.Printf("The type of make_slice: %T \nThe value: %v \nthe length: %v \nThe capacity: %v\n",
 		make_slice, make_slice, len(make_slice), cap(make_slice))
 
-	fmt.Printf("Total of matrix %v: %d\n\n", my_array, tot(my_array[:]...))
-
+	// testing getCostByDay()
 	cost := [][]float64{
 		{0, 2.5},
 		{1, 2.1},
