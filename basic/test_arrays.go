@@ -38,13 +38,14 @@ func main() {
 	}
 	pl("Cost: %v\n", cost)
 	total_cost := getCostByDay(cost)
+	pl("total_cost[] %v\n", total_cost)
 
 	for i := 0; i < len(total_cost); i++ {
 		fmt.Printf("Day %d: %f\n", i+1, total_cost[i])
 	}
 }
 
-// cost is a 2D array, return total cost of day
+// cost is a 2D array, return sum[] cost of day
 func getCostByDay(cost [][]float64) []float64 {
 	// get the last value of cost[value][]
 	days := cost[len(cost)-1][0] + 1
