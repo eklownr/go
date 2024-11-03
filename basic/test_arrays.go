@@ -40,12 +40,13 @@ func main() {
 
 	fmt.Printf("Total of cost %v: \n%f\n", cost, total_cost)
 
-	// pl(string, interface). Replace for fmt.Println()
+	// pl(string, ...interface). Replace for fmt.Printf()
 	pl("total %v", total_cost)
 	pl("Testing int %v", 1234)
 	my_string := "Hello World"
-	pl("String %v", my_string)
+	pl("String and string: %v", my_string)
 	pl("Total of cost %v: \n%f\n", cost, total_cost)
+	pl("hello world!")
 }
 
 // cost is a 2D array, return total cost of day
@@ -57,6 +58,10 @@ func getCostByDay(day int, cost [][]float64) float64 {
 	}
 	return 0
 }
+
+// func pl(s string, value ...interface{}) {
+//	 fmt.Println("\n" + s + fmt.Sprintf(s, value...))
+// }
 
 // replace for fmt.Printf(string, multiple values)
 func pl(s string, value ...interface{}) {
