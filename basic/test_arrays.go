@@ -43,8 +43,25 @@ func main() {
 	pl("total_cost[] %v\n", total_cost)
 
 	for i := 0; i < len(total_cost); i++ {
-		fmt.Printf("Day %d: %f\n", i+1, total_cost[i])
+		pl("Day %d: %f", i+1, total_cost[i])
 	}
+
+	// createMatrix()
+	fmt.Println("\n--------------\ncreateMatrix(10, 10)\n--------------")
+
+	matrix10_10 := createMatrix(10, 10)
+	for i := 0; i < len(matrix10_10); i++ {
+		pl("row %d: %v", i, matrix10_10[i])
+	}
+
+	// square_matrix()
+	fmt.Println("\n--------------\nsquareMatrix(10, 10)\n--------------")
+
+	matrix10 := squareMatrix(matrix10_10)
+	for i := 0; i < len(matrix10); i++ {
+		pl("row %d: %v", i, matrix10[i])
+	}
+
 }
 
 // cost is a 2D array, return sum[] cost of day
@@ -99,4 +116,21 @@ func pl(s string, value ...interface{}) {
 		fmt.Printf(s, value[0], value[1], value[2], value[3])
 		fmt.Println()
 	}
+}
+
+func createMatrix(row, col int) [][]int {
+	matrix := make([][]int, row)
+	for i := 0; i < row; i++ {
+		matrix[i] = make([]int, col)
+	}
+	return matrix
+}
+
+func squareMatrix(matrix [][]int) [][]int {
+	for i := 0; i < len(matrix); i++ {
+		for j := 0; j < len(matrix[i]); j++ {
+			matrix[i][j] = i * j
+		}
+	}
+	return matrix
 }
