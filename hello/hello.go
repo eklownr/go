@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"example.com/greetings"
+	"example.com/greetings" // replace => ../greetings in go.mod
 )
 
 func main() {
