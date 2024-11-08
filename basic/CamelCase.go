@@ -8,7 +8,7 @@ import (
 
 func main() {
 	a := "asdf_asdf-apa"
-	b := "åäö_åäö-åäö"
+	b := "åäö_åäö-åäö_ABC"
 	c := camelCase(a)
 	d := camelCase(b)
 	fmt.Printf("*********\nCamelCase of: '%s' and: '%s'\n", a, b)
