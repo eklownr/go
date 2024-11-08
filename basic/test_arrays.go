@@ -62,7 +62,7 @@ func main() {
 		pl("row %d: %v", i, matrix10[i])
 	}
 
-}
+} // end main()
 
 // cost is a 2D array, return sum[] cost of day
 func getCostByDay(cost [][]float64) []float64 {
