@@ -7,11 +7,13 @@ import (
 )
 
 func main() {
-	fmt.Println("\nCamelCase asdf_asdf-apa: ")
-	c := camelCase("asdf_asdf-apa")
-	d := camelCase("åäö_åäö-åäö")
-	fmt.Printf("\n********\n return value of camelCase(): \n%v\n********\n", c)
-	fmt.Printf("\n********\n return value of camelCase(): \n%v\n********\n", d)
+	a := "asdf_asdf-apa"
+	b := "åäö_åäö-åäö"
+	c := camelCase(a)
+	d := camelCase(b)
+	fmt.Printf("*********\nCamelCase of: '%s' and: '%s'\n", a, b)
+	fmt.Printf("\n********\n return value of camelCase(%s): \n %v\n********\n", a, c)
+	fmt.Printf("\n********\n return value of camelCase(%s): \n %v\n********\n", b, d)
 }
 
 func camelCase(s string) string {
