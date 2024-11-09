@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -39,14 +40,20 @@ func reverseRunes(word string) string {
 	return rr
 }
 
+var StringToNumber = strconv.Atoi
+
 func main() {
 	w := ReverseWords("hello world here i come")
 	fmt.Println(w)
-	fmt.Print(w)
-	fmt.Print(w)
 	rr := reverseRunes("world")
 	fmt.Println(rr)
-	rw := ReverseWords2("hello world here i come")
-	fmt.Print(rw)
+	rw := ReverseWords2("sex laxar i en laxask")
 	fmt.Println(rw)
+
+	stn, err := StringToNumber("1234")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("strToNr: %v", stn)
+	}
 }
