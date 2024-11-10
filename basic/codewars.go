@@ -50,6 +50,49 @@ func ReverseSeq(n int) (a []int) {
 	return
 }
 
+// // crypt, decrypt GA-DE-RY-PO-LU-KI
+// var cipher = map[string]string{"G": "A", "D": "E", "R": "Y", "P": "O", "L": "U", "K": "I"}
+
+// func Encode(str string) (encodeStr string) {
+// 	s := strings.ToUpper(str)
+// 	for _, c := range s {
+// 		replace := false
+// 		for k, v := range cipher {
+// 			if string(c) == v {
+// 				encodeStr += k
+// 				replace = true
+// 			}
+// 		}
+// 		if !replace {
+// 			encodeStr += string(c)
+// 		}
+// 	}
+// 	return
+// }
+
+var codeMap = map[rune]rune{
+	'G': 'A', 'g': 'a', 'D': 'E', 'd': 'e', 'R': 'Y', 'r': 'y',
+	'P': 'O', 'p': 'o', 'L': 'U', 'l': 'u', 'K': 'I', 'k': 'i',
+	'A': 'G', 'a': 'g', 'E': 'D', 'e': 'd', 'Y': 'R', 'y': 'r',
+	'O': 'P', 'o': 'p', 'U': 'L', 'u': 'l', 'I': 'K', 'i': 'k',
+}
+
+func Encode(str string) (res string) {
+	for _, v := range str {
+		val, ok := codeMap[v]
+		if ok {
+			res += string(val)
+		} else {
+			res += string(v)
+		}
+	}
+	return res
+}
+
+func Decode(str string) string {
+	return Encode(str)
+}
+
 func main() {
 	a := "Sallad i Dallas"
 	b := "Sirap i Paris"
@@ -64,5 +107,17 @@ func main() {
 
 	// squereASum
 	my_list := []int{1, 2, 2}
-	fmt.Printf("my:list: %v, squareSum: %v", my_list, SquareSum(my_list))
+	fmt.Printf("my:list: %v, squareSum: %v\n\n", my_list, SquareSum(my_list))
+
+	// encode decode
+	crypt := Encode(b)
+	fmt.Printf("%v encode -> %v\n", b, crypt)
+	decrypt := Decode(crypt)
+	fmt.Printf("%v decode -> %v\n", crypt, decrypt)
+
+	cat := "Ala has a cat"
+	encodeCat := Encode(cat)
+	fmt.Printf("%v encode -> %v\n", cat, encodeCat)
+	de := Decode(encodeCat)
+	fmt.Printf("%v decode -> %v\n", encodeCat, de)
 }
