@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func ReverseWords2(str string) string {
+func ReverseWords(str string) string {
 	strSplit := strings.Split(str, " ")
 	var res []string
 	for i := len(strSplit) - 1; i >= 0; i-- {
@@ -15,44 +15,41 @@ func ReverseWords2(str string) string {
 	return strings.Join(res, " ")
 }
 
-func ReverseWords(str string) string {
+func ReverseWordsAndRunes(str string) string {
 	var rw string
 	words := strings.Split(str, " ")
-	for i, _ := range words {
-		i++
-		rw += words[len(words)-i]
 
-		if len(words)-i != 0 {
+	for i := len(words) - 1; i >= 0; i-- {
+		rw += reverseRunes(words[i]) // reverse runes in the word and reverse all words
+		if len(words)-i != 0 {       // add spaces between words
 			rw += " "
 		}
 	}
-	return rw // reversed words
+	return rw
 }
 
 func reverseRunes(word string) string {
 	var rr string
 	for i, _ := range word {
-		//fmt.Printf("i: %v, r: %v \n", i, r)
 		i++
 		rr += string(word[len(word)-i])
-
 	}
 	return rr
 }
 
-var StringToNumber = strconv.Atoi
+var StringToNumber = strconv.Atoi // use var as a function
 
 func main() {
-	w := ReverseWords("hello world here i come")
+	w := ReverseWordsAndRunes("hello world here i come")
 	fmt.Println(w)
 	rr := reverseRunes("world")
 	fmt.Println(rr)
-	rw := ReverseWords2("sex laxar i en laxask")
+	rw := ReverseWords("sex laxar i en laxask")
 	fmt.Println(rw)
 
 	stn, err := StringToNumber("1234")
 	if err != nil {
-		fmt.Println(err)
+		panic(err)
 	} else {
 		fmt.Printf("strToNr: %v", stn)
 	}
