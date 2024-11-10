@@ -42,10 +42,18 @@ func SquareSum(numbers []int) (result int) {
 	return result
 }
 
+// n 5 --> [5,4,3,2,1]
+func ReverseSeq(n int) (a []int) {
+	for i := n; i > 0; i-- {
+		a = append(a, i)
+	}
+	return
+}
+
 func main() {
-	a := "sallad i dallas"
-	b := "sirap i paris"
-	c := "ola salo"
+	a := "Sallad i Dallas"
+	b := "Sirap i Paris"
+	c := "Ola Salo"
 	d := "hello world"
 	e := "a"
 	fmt.Printf("'%s' is palindrome: %v\n", a, IsPalindrome(a))
