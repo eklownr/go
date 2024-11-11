@@ -22,19 +22,6 @@ func IsPalindrome(str string) bool {
 	return palindrome
 }
 
-// // test do not pass "ola salo"
-// func IsPalindrome(str string) bool {
-// 	str = strings.ToLower(str)
-// 	n := len(str)
-// 	for i := 0; i < n; i++ {
-// 		n -= 1
-// 		if str[i] != str[n] {
-// 			return false
-// 		}
-// 	}
-// 	return true
-// }
-
 func SquareSum(numbers []int) (result int) {
 	for _, n := range numbers {
 		result += n * n
@@ -50,25 +37,25 @@ func ReverseSeq(n int) (a []int) {
 	return
 }
 
-// // crypt, decrypt GA-DE-RY-PO-LU-KI
-// var cipher = map[string]string{"G": "A", "D": "E", "R": "Y", "P": "O", "L": "U", "K": "I"}
+func Encode(str string) (encodeStr string) {
+	for _, c := range str {
+		replace := false
+		// if val, ok := codeMap[c]; ok {
+		// 	fmt.Printf("val: %v, Ok: %v \n", val, ok)
+		// }
+		for k, v := range codeMap {
+			if c == v {
+				encodeStr += string(k)
+				replace = true
+			}
+		}
+		if !replace {
+			encodeStr += string(c)
+		}
+	}
 
-// func Encode(str string) (encodeStr string) {
-// 	s := strings.ToUpper(str)
-// 	for _, c := range s {
-// 		replace := false
-// 		for k, v := range cipher {
-// 			if string(c) == v {
-// 				encodeStr += k
-// 				replace = true
-// 			}
-// 		}
-// 		if !replace {
-// 			encodeStr += string(c)
-// 		}
-// 	}
-// 	return
-// }
+	return
+}
 
 var codeMap = map[rune]rune{
 	'G': 'A', 'g': 'a', 'D': 'E', 'd': 'e', 'R': 'Y', 'r': 'y',
@@ -77,17 +64,17 @@ var codeMap = map[rune]rune{
 	'O': 'P', 'o': 'p', 'U': 'L', 'u': 'l', 'I': 'K', 'i': 'k',
 }
 
-func Encode(str string) (res string) {
-	for _, v := range str {
-		val, ok := codeMap[v]
-		if ok {
-			res += string(val)
-		} else {
-			res += string(v)
-		}
-	}
-	return res
-}
+// func Encode(str string) (res string) {
+// 	for _, v := range str {
+// 		val, ok := codeMap[v]
+// 		if ok {
+// 			res += string(val)
+// 		} else {
+// 			res += string(v)
+// 		}
+// 	}
+// 	return res
+// }
 
 func Decode(str string) string {
 	return Encode(str)
