@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -138,8 +139,28 @@ func Past(h, m, s int) int {
 }
 
 func TwoToOne(s1 string, s2 string) string {
-	s3 := s1 + s2
-	return s3
+	s := strings.Split(s1+s2, "")
+	m := make(map[string]int)
+	uniqueStr := ""
+	for i, c := range s {
+		m[c] = i
+	}
+	for key, _ := range m {
+		uniqueStr += key
+	}
+	//fmt.Println(m)
+	unique := strings.Split(uniqueStr, "")
+	sort.Strings(unique)
+	return strings.Join(unique, "")
+}
+func tto(s1, s2 string) (result string) {
+	s := s1 + s2
+	for _, char := range strings.Split("abcdefghijklmnopqrstuvwxyz", "") {
+		if strings.Contains(s, char) {
+			result += char
+		}
+	}
+	return
 }
 
 func main() {
@@ -181,4 +202,9 @@ func main() {
 	fmt.Printf("HowMuchILoveYou: %s\n\n", HowMuchILoveYou(7))
 
 	fmt.Printf("0, 1, 1 => 61000: %v\n", Past(0, 1, 1))
+
+	a = "xyaabbbccccdefww"
+	b = "xxxxyyyyabklmopq"
+	fmt.Printf("a + b: %v\n", TwoToOne(a, b))
+	fmt.Printf("a + b: %v\n", tto(a, b))
 }
