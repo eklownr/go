@@ -80,6 +80,68 @@ func Decode(str string) string {
 	return Encode(str)
 }
 
+func ToJadenCase(str string) string {
+	return strings.Title(str)
+}
+
+func initName(name string) string {
+	name = strings.ToUpper(name)
+	words := strings.Split(name, " ")
+	var initial []string
+	for _, val := range words {
+		initial = append(initial, string(val[0]))
+	}
+	return initial[0] + "." + initial[1]
+}
+
+func GetMiddle(s string) string {
+	strLen := len(s)
+	if strLen%2 == 0 {
+		return string(s[strLen/2-1]) + string(s[strLen/2])
+	}
+	return string(s[strLen/2])
+}
+
+func HowMuchILoveYou(i int) string {
+	var phrase = []string{
+		"I love you",
+		"a little",
+		"a lot",
+		"passionately",
+		"madly",
+		"not at all",
+	}
+	for i > 6 {
+		i = i - 6
+	}
+	return phrase[i-1]
+}
+func GetGrade(a, b, c int) rune {
+	average := (a + b + c) / 3
+	if average >= 90 {
+		return 'A'
+	}
+	if average >= 80 {
+		return 'B'
+	}
+	if average >= 70 {
+		return 'C'
+	}
+	if average >= 60 {
+		return 'D'
+	}
+	return 'F'
+}
+
+func Past(h, m, s int) int {
+	return (h*60*60 + m*60 + s) * 1000
+}
+
+func TwoToOne(s1 string, s2 string) string {
+	s3 := s1 + s2
+	return s3
+}
+
 func main() {
 	a := "Sallad i Dallas"
 	b := "Sirap i Paris"
@@ -107,4 +169,16 @@ func main() {
 	fmt.Printf("%v encode -> %v\n", cat, encodeCat)
 	de := Decode(encodeCat)
 	fmt.Printf("%v decode -> %v\n", encodeCat, de)
+
+	fmt.Println(initName("Richard Eklöw"))
+
+	fmt.Println(GetMiddle("Richar"))
+	fmt.Println(GetMiddle("Richard"))
+	fmt.Println(GetMiddle("R"))
+	fmt.Println(GetMiddle("char"))
+
+	fmt.Printf("\nHowMuchILoveYou: %s\n", HowMuchILoveYou(6))
+	fmt.Printf("HowMuchILoveYou: %s\n\n", HowMuchILoveYou(7))
+
+	fmt.Printf("0, 1, 1 => 61000: %v\n", Past(0, 1, 1))
 }
