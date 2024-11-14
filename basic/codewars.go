@@ -41,9 +41,6 @@ func ReverseSeq(n int) (a []int) {
 func Encode(str string) (encodeStr string) {
 	for _, c := range str {
 		replace := false
-		// if val, ok := codeMap[c]; ok {
-		// 	fmt.Printf("val: %v, Ok: %v \n", val, ok)
-		// }
 		for k, v := range codeMap {
 			if c == v {
 				encodeStr += string(k)
@@ -54,7 +51,6 @@ func Encode(str string) (encodeStr string) {
 			encodeStr += string(c)
 		}
 	}
-
 	return
 }
 
@@ -65,17 +61,18 @@ var codeMap = map[rune]rune{
 	'O': 'P', 'o': 'p', 'U': 'L', 'u': 'l', 'I': 'K', 'i': 'k',
 }
 
-// func Encode(str string) (res string) {
-// 	for _, v := range str {
-// 		val, ok := codeMap[v]
-// 		if ok {
-// 			res += string(val)
-// 		} else {
-// 			res += string(v)
-// 		}
-// 	}
-// 	return res
-// }
+// cleaner solution
+func encode(str string) (res string) {
+	for _, v := range str {
+		val, ok := codeMap[v]
+		if ok {
+			res += string(val)
+		} else {
+			res += string(v)
+		}
+	}
+	return res
+}
 
 func Decode(str string) string {
 	return Encode(str)
@@ -190,8 +187,6 @@ func main() {
 	fmt.Printf("%v encode -> %v\n", cat, encodeCat)
 	de := Decode(encodeCat)
 	fmt.Printf("%v decode -> %v\n", encodeCat, de)
-
-	fmt.Println(initName("Richard Eklöw"))
 
 	fmt.Println(GetMiddle("Richar"))
 	fmt.Println(GetMiddle("Richard"))
