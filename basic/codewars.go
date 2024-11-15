@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -160,6 +162,159 @@ func tto(s1, s2 string) (result string) {
 	return
 }
 
+func SumMix(arr []any) (sum int) {
+	var StringToNumber = strconv.Atoi
+	for i, _ := range arr {
+		n, ok := arr[i].(int)
+		if !ok {
+			num, err := StringToNumber(arr[i].(string))
+			if err != nil {
+				panic(err)
+			}
+			sum += num
+		}
+		sum += n
+	}
+	return
+}
+
+func RepeatStr(rep int, value string) (s string) {
+	for i := 0; i < rep; i++ {
+		s += value
+	}
+	return s
+}
+
+func FindMultiples(integer, limit int) []int {
+	resp := []int{}
+
+	for i := integer; i <= limit; i += integer {
+		resp = append(resp, i)
+	}
+
+	return resp
+}
+func Hero(bullets, dragons int) bool {
+	return bullets >= 2*dragons
+}
+
+// return employed && !vacation
+func SetAlarm(employed, vacation bool) bool {
+	if employed == true && vacation == false {
+		return true
+	}
+	return false
+}
+
+func RemoveChar(word string) string {
+	return word[1 : len(word)-1]
+}
+
+func ReverseLetters(s string) (res string) {
+	// reg expression only letters
+	s = regexp.MustCompile(`[^a-zA-Z]+`).ReplaceAllString(s, "")
+
+	for i, char := range s {
+		i++
+		if (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') {
+			res += string(s[len(s)-i])
+		}
+	}
+	return res
+}
+
+// out += fmt.Sprintf("%d sheep...", i)
+func countSheep(num int) (s string) {
+	for i := 1; i <= num; i++ {
+		s += strconv.Itoa(i) + " sheep..."
+	}
+	return
+}
+func QuarterOf(month int) int {
+	if month <= 3 {
+		return 1
+	}
+	if month <= 6 {
+		return 2
+	}
+	if month <= 9 {
+		return 3
+	}
+	return 4
+}
+
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+func Accum(s string) string {
+	parts := make([]string, len(s))
+
+	for i := 0; i < len(s); i++ {
+		parts[i] = strings.ToUpper(string(s[i])) + strings.Repeat(strings.ToLower(string(s[i])), i)
+	}
+	return strings.Join(parts, "-")
+}
+
+// Expect(BinToDec("101010")).To(Equal(42))
+func BinToDec(bin string) int {
+	num, _ := strconv.ParseInt(bin, 2, 64)
+
+	return int(num)
+}
+func FindShort(s string) int {
+	shortest := len(s)
+	for _, word := range strings.Split(s, " ") {
+		if len(word) < shortest {
+			shortest = len(word)
+		}
+	}
+	return shortest
+
+}
+
+// return strings.ReplaceAll(word, " ", "")
+func NoSpace(s string) string {
+	words := strings.Split(s, " ")
+	return strings.Join(words, "")
+}
+func century(year int) int {
+	return (year + 99) / 100
+}
+func HighAndLow(num string) string {
+	nums := strings.Split(num, " ")
+	min, _ := strconv.Atoi(nums[0])
+	max := min
+	for _, num := range nums {
+		n, _ := strconv.Atoi(num)
+		if n < min {
+			min = n
+		}
+		if n > max {
+			max = n
+		}
+	}
+	return fmt.Sprintf("%d %d", max, min)
+}
+
+func StringToArray(str string) []string {
+	return strings.Split(str, " ")
+}
+
+func High(s string) string {
+	words := strings.Split(s, " ")
+	highest := 0
+	highestWord := ""
+	for _, word := range words {
+		sum := 0
+		for _, char := range word {
+			sum += int(char) - 96
+			fmt.Println(int(char) - 96)
+		}
+		if sum > highest {
+			highest = sum
+			highestWord = word
+		}
+	}
+	return highestWord
+}
 func main() {
 	a := "Sallad i Dallas"
 	b := "Sirap i Paris"
@@ -202,4 +357,25 @@ func main() {
 	b = "xxxxyyyyabklmopq"
 	fmt.Printf("a + b: %v\n", TwoToOne(a, b))
 	fmt.Printf("a + b: %v\n", tto(a, b))
+
+	num := []any{9, 3, "7", "3"}
+	fmt.Printf("any: %v\n", SumMix(num))
+
+	fmt.Printf("multi values %v\n", FindMultiples(2, 6))
+	fmt.Printf("multi values %v\n", FindMultiples(5, 25))
+
+	fmt.Printf("Hero wins over dragon %v\n", Hero(0, 1))
+
+	fmt.Printf("Rever letters 'ultr53o?n': %v\n", ReverseLetters("ultr53o?n"))
+
+	fmt.Printf("%v\n", countSheep(3))
+
+	fmt.Printf("%v\n", Accum("ZpglnRxqenU"))
+	fmt.Printf("%v\n", Accum("RqaEzty"))
+
+	fmt.Printf("shotest%v\n", FindShort("123 hej på dej:w"))
+
+	fmt.Printf("HighAndLow(1 2 3 4 5): %v\n", HighAndLow("1 2 3 4 5"))
+
+	fmt.Printf("abc: %v\n", High("abc"))
 }
