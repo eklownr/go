@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func maxSumSubarray(arr []int, k int) int {
@@ -43,12 +44,28 @@ func slidingWindow(str string, k int) {
 	}
 }
 
+func LongestConsec(strarr []string, k int) (result string) {
+	for i := 0; i < len(strarr)-k+1; i++ {
+		buffer := strings.Join(strarr[i:i+k], "")
+		if len(buffer) > len(result) {
+			result = buffer
+		}
+	}
+	return
+}
+
 func main() {
-	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	intarr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	k := 4
-	maxSum := maxSumSubarray(arr, k)
-	fmt.Printf("Arr: %#v with k = %d maxSum: %d \n", arr, k, maxSum)
+	maxSum := maxSumSubarray(intarr, k)
+	fmt.Printf("Arr: %#v with k = %d maxSum: %d \n", intarr, k, maxSum)
 
 	sampleString := "abcdefghijklmnopqrstuvwxyz"
 	slidingWindow(sampleString, 5)
+
+	var arr = []string{"zone", "abigail", "theta", "form", "libe", "zas"}
+	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr, 2))
+
+	var arr2 = []string{"ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"}
+	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr2, 1))
 }

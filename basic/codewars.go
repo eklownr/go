@@ -351,16 +351,6 @@ func BouncingBall(h, bounce, window float64) int {
 	return count
 }
 
-func LongestConsec(strarr []string, k int) (result string) {
-	for i := 0; i < len(strarr)-k+1; i++ {
-		buffer := strings.Join(strarr[i:i+k], "")
-		if len(buffer) > len(result) {
-			result = buffer
-		}
-	}
-	return
-}
-
 func main() {
 	a := "Sallad i Dallas"
 	b := "Sirap i Paris"
@@ -428,10 +418,4 @@ func main() {
 	fmt.Printf("calk years: %v\n", CalculateYears(2))
 
 	fmt.Printf("abcxyz: %v\n", Disemvowel("abcxyz"))
-
-	var arr = []string{"zone", "abigail", "theta", "form", "libe", "zas"}
-	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr, 2))
-
-	var arr2 = []string{"ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"}
-	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr2, 1))
 }
