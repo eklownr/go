@@ -302,11 +302,11 @@ func High(s string) string {
 	words := strings.Split(s, " ")
 	highest := 0
 	highestWord := ""
+
 	for _, word := range words {
 		sum := 0
 		for _, char := range word {
 			sum += int(char) - 96
-			fmt.Println(int(char) - 96)
 		}
 		if sum > highest {
 			highest = sum
@@ -315,6 +315,52 @@ func High(s string) string {
 	}
 	return highestWord
 }
+
+func CalculateYears(years int) (result [3]int) {
+	result[0] = years
+	result[1] = 15 + 9
+	result[2] = 15 + 9
+	cat := 4
+	dog := 5
+
+	for i := 1; i < years; i++ {
+		result[2] += cat
+		result[1] += dog
+	}
+	return
+}
+
+// remove all aeiouy
+func Disemvowel(comment string) string {
+	vowels := "aeiouyAEIOUY"
+	for _, v := range vowels {
+		comment = strings.ReplaceAll(comment, string(v), "")
+	}
+	return comment
+}
+
+func BouncingBall(h, bounce, window float64) int {
+	if h <= 0 || bounce <= 0 || bounce >= 1 || window >= h {
+		return -1
+	}
+	count := 1
+	for h*bounce > window {
+		h *= bounce
+		count += 2
+	}
+	return count
+}
+
+func LongestConsec(strarr []string, k int) (result string) {
+	for i := 0; i < len(strarr)-k+1; i++ {
+		buffer := strings.Join(strarr[i:i+k], "")
+		if len(buffer) > len(result) {
+			result = buffer
+		}
+	}
+	return
+}
+
 func main() {
 	a := "Sallad i Dallas"
 	b := "Sirap i Paris"
@@ -377,5 +423,15 @@ func main() {
 
 	fmt.Printf("HighAndLow(1 2 3 4 5): %v\n", HighAndLow("1 2 3 4 5"))
 
-	fmt.Printf("abc: %v\n", High("abc"))
+	fmt.Printf("abc: %v\n", High("abc epa"))
+
+	fmt.Printf("calk years: %v\n", CalculateYears(2))
+
+	fmt.Printf("abcxyz: %v\n", Disemvowel("abcxyz"))
+
+	var arr = []string{"zone", "abigail", "theta", "form", "libe", "zas"}
+	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr, 2))
+
+	var arr2 = []string{"ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"}
+	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr2, 1))
 }
