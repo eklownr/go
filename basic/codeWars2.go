@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -63,7 +64,6 @@ func Match(desired int, collateArr []int) bool {
 	}
 	return false
 }
-
 func ArrayDiff(a, b []int) (different []int) {
 	for _, desired := range a {
 		if !Match(desired, b) {
@@ -71,6 +71,36 @@ func ArrayDiff(a, b []int) (different []int) {
 		}
 	}
 	return different
+}
+
+func Digitize(n int) (a []int) {
+	if n == 0 {
+		a = append(a, 0)
+	}
+	for ; n > 0; n /= 10 {
+		a = append(a, n%10)
+	}
+	return
+}
+
+func Digi(num int) (rev []int) {
+	slice := make([]int, 0)
+
+	for _, digit := range strconv.Itoa(num) {
+		i, _ := strconv.Atoi(string(digit))
+		slice = append(slice, i)
+	}
+	return slice
+}
+func ReverseDig(num int) []int {
+	str := fmt.Sprintf("%d", num)
+	digits := strings.Split(str, "")
+	integers := make([]int, len(digits))
+	for i, d := range digits {
+		n, _ := strconv.Atoi(d)
+		integers[len(digits)-i-1] = n
+	}
+	return integers
 }
 
 func main() {
@@ -93,4 +123,7 @@ func main() {
 	fmt.Printf("arr2: %v\n", intarr2)
 	fmt.Printf("ArrayDiff(arr1, arr2), result: %v. \n", ArrayDiff(intarr, intarr2))
 	fmt.Printf("ArrayDiff(arr2, arr1), result: %v. \n", ArrayDiff(intarr2, intarr))
+
+	fmt.Printf("Digitize(35231) result: %v. \n", Digitize(35231))
+	fmt.Printf("ReverseDig(35231) result: %v. \n", ReverseDig(35231))
 }
