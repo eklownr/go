@@ -54,6 +54,25 @@ func LongestConsec(strarr []string, k int) (result string) {
 	return
 }
 
+// ArrayDiff
+func Match(desired int, collateArr []int) bool {
+	for _, collate := range collateArr {
+		if collate == desired {
+			return true
+		}
+	}
+	return false
+}
+
+func ArrayDiff(a, b []int) (different []int) {
+	for _, desired := range a {
+		if !Match(desired, b) {
+			different = append(different, desired)
+		}
+	}
+	return different
+}
+
 func main() {
 	intarr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	k := 4
@@ -68,4 +87,7 @@ func main() {
 
 	var arr2 = []string{"ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"}
 	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr2, 1))
+
+	intarr2 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	fmt.Printf("ArrayDiff -> 10, result:  %v\n", ArrayDiff(intarr2, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}))
 }
