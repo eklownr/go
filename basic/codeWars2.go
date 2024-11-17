@@ -88,6 +88,9 @@ func main() {
 	var arr2 = []string{"ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"}
 	fmt.Printf("LongestConsec: %v\n", LongestConsec(arr2, 1))
 
-	intarr2 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
-	fmt.Printf("ArrayDiff -> 10, result:  %v\n", ArrayDiff(intarr2, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}))
+	intarr2 := []int{1, 3, 4, 5, 6, 7, 8, 9, 33}
+	fmt.Printf("\narr1: %v\n", intarr)
+	fmt.Printf("arr2: %v\n", intarr2)
+	fmt.Printf("ArrayDiff(arr1, arr2), result: %v. \n", ArrayDiff(intarr, intarr2))
+	fmt.Printf("ArrayDiff(arr2, arr1), result: %v. \n", ArrayDiff(intarr2, intarr))
 }
