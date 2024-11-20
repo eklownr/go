@@ -61,22 +61,52 @@ type Fighter struct {
 func Attack(fighter Fighter, defender Fighter) {
 	defender.Health -= fighter.DamagePerAttack
 }
-func DeclareWinner(fighter1 Fighter, fighter2 Fighter, firstAttacker string) string {
+func DeclareWinner2(fighter1 Fighter, fighter2 Fighter, firstAttacker string) string {
 	for fighter1.Health >= 0 && fighter2.Health >= 0 {
 		if firstAttacker == fighter1.Name {
 			fighter2.Health -= fighter1.DamagePerAttack
+			if fighter2.Health <= 0 {
+				return fighter1.Name
+			}
 			fighter1.Health -= fighter2.DamagePerAttack
-			fmt.Println(firstAttacker, " : ", fighter1.Health, fighter2.Health)
+			if fighter1.Health <= 0 {
+				return fighter2.Name
+			}
 		} else {
 			fighter1.Health -= fighter2.DamagePerAttack
+			if fighter1.Health <= 0 {
+				return fighter2.Name
+			}
 			fighter2.Health -= fighter1.DamagePerAttack
-			fmt.Println(fighter1.Health, "fist: ", firstAttacker, fighter2.Health)
+			if fighter2.Health <= 0 {
+				return fighter1.Name
+			}
 		}
 	}
 	if fighter1.Health > fighter2.Health {
 		return fighter1.Name
 	}
 	return fighter2.Name
+}
+
+func DeclareWinner(fighter1 Fighter, fighter2 Fighter, firstAttacker string) string {
+	for {
+		if firstAttacker == fighter1.Name {
+			fighter2.Health -= fighter1.DamagePerAttack
+			firstAttacker = fighter2.Name
+		} else {
+			fighter1.Health -= fighter2.DamagePerAttack
+			firstAttacker = fighter1.Name
+		}
+
+		if fighter1.Health <= 0 {
+			return fighter2.Name
+		}
+
+		if fighter2.Health <= 0 {
+			return fighter1.Name
+		}
+	}
 }
 
 func main() {
@@ -103,6 +133,6 @@ func main() {
 	fmt.Println(DeclareWinner(f1, f2, "Lew"))
 	//.To(Equal("Lew"))
 
-	fmt.Println(DeclareWinner(f2, f1, "Lew"))
+	fmt.Println(DeclareWinner(f1, f2, "Harry"))
 	// has to return "Harry"
 }
