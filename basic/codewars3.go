@@ -154,6 +154,8 @@ func (s MyString) IsUpperCase2() bool {
 	}
 	return count == len(noBlanks)
 }
+
+// Better solution
 func (s MyString) IsUpperCase() bool {
 	return s == MyString(strings.ToUpper(string(s)))
 }
