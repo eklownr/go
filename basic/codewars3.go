@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"unicode"
 )
 
 func RoundToNext5(n int) int {
@@ -116,6 +117,47 @@ func MultiTable(number int) (table string) {
 	return table[:len(table)-1]
 }
 
+// 10 min walk
+func IsValidWalk(walk []rune) bool {
+	if len(walk) != 10 {
+		return false
+	}
+	var n, s, w, e int
+	for _, val := range walk {
+		switch val {
+		case 'n':
+			n++
+		case 's':
+			s++
+		case 'w':
+			w++
+		case 'e':
+			e++
+		}
+	}
+	if n == s && w == e {
+		return true
+	}
+	return false
+}
+
+type MyString string
+
+func (s MyString) IsUpperCase2() bool {
+	str := string(s)
+	noBlanks := strings.ReplaceAll(str, " ", "")
+	count := 0
+	for i := 0; i < len(noBlanks); i++ {
+		if unicode.IsUpper(rune(noBlanks[i])) {
+			count++
+		}
+	}
+	return count == len(noBlanks)
+}
+func (s MyString) IsUpperCase() bool {
+	return s == MyString(strings.ToUpper(string(s)))
+}
+
 func main() {
 	fmt.Println("Hello play ground")
 	count := 12
@@ -145,4 +187,24 @@ func main() {
 
 	fmt.Println(MultiTable(5))
 	fmt.Println(MultiTable(45))
+
+	r1 := []rune{'n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's'}
+	r2 := []rune{'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e'}
+	r3 := []rune{'w'}
+	r4 := []rune{'n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's'}
+	r5 := []rune{'n', 's', 'e', 'w', 'n', 's', 'e', 'w', 'n', 's'}
+	fmt.Println(IsValidWalk(r1))
+	fmt.Println(IsValidWalk(r2))
+	fmt.Println(IsValidWalk(r3))
+	fmt.Println(IsValidWalk(r4))
+	fmt.Println(IsValidWalk(r5))
+
+	fmt.Println("IsUpperCase:")
+	fmt.Println(MyString.IsUpperCase("c"))
+	fmt.Println(MyString.IsUpperCase("C"))
+	fmt.Println(MyString.IsUpperCase("ABC"))
+	fmt.Println(MyString.IsUpperCase("C B A"))
+	fmt.Println(MyString.IsUpperCase("hello I AM DONALD"))
+	fmt.Println(MyString.IsUpperCase("HELLO I AM DONALD"))
+	fmt.Println(MyString.IsUpperCase("ACSKLDFJSggggSKLDFJSKLDFJ"))
 }
