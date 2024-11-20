@@ -109,6 +109,13 @@ func DeclareWinner(fighter1 Fighter, fighter2 Fighter, firstAttacker string) str
 	}
 }
 
+func MultiTable(number int) (table string) {
+	for i := 1; i <= 10; i++ {
+		table += fmt.Sprintf("%d * %d = %d\n", i, number, i*number)
+	}
+	return table[:len(table)-1]
+}
+
 func main() {
 	fmt.Println("Hello play ground")
 	count := 12
@@ -128,11 +135,14 @@ func main() {
 	var d = []string{"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"}
 	var e = []string{"A", "B"}
 	dotest(d, e, "(A : 200) - (B : 1140)")
+
 	f1 := Fighter{"Lew", 10, 2}
 	f2 := Fighter{"Harry", 5, 4}
 	fmt.Println(DeclareWinner(f1, f2, "Lew"))
 	//.To(Equal("Lew"))
-
 	fmt.Println(DeclareWinner(f1, f2, "Harry"))
 	// has to return "Harry"
+
+	fmt.Println(MultiTable(5))
+	fmt.Println(MultiTable(45))
 }
