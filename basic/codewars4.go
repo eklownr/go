@@ -63,18 +63,14 @@ func UniqueFloat32(arr []float32) []float32 {
 
 // Upper sorted lastname, firstname
 func Meeting(s string) string {
-	s = strings.ToUpper(s)
-	names := strings.Split(s, ";")
-	for i := 0; i < len(names); i++ {
-		firstname, lastname := strings.Split(names[i], ":")[0], strings.Split(names[i], ":")[1]
-		//names[i] = strings.Split(names[i], ":")[1] + strings.Split(names[i], ":")[0]
-		fmt.Println("(", lastname, ",", firstname, ")")
+	names := strings.Split(strings.ToUpper(s), ";")
+	result := []string{}
+	for _, name := range names {
+		parts := strings.Split(name, ":")
+		result = append(result, "("+parts[1]+", "+parts[0]+")")
 	}
-	sort.SliceStable(names, func(i, j int) bool { return names[i] < names[j] })
-	//for i := 0; i < len(names)-1; i++ {
-	//	names[i] = strings.Split(names[i], " ")[1] + ", " + strings.Split(names[i], " ")[0]
-	//}
-	return strings.Join(names, ", ")
+	sort.Strings(result)
+	return strings.Join(result, "")
 }
 
 func main() {
