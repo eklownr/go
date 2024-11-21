@@ -18,6 +18,8 @@ func Derive(coefficient, exponent int) string {
 
 func NearestSq(n int) int {
 	root := math.Sqrt(float64(n))
+	//	roundRoot := math.Round(math.Sqrt(float64(n)))
+	//	fmt.Printf("Root: %v, rouned: %v, squere: %v\n", root, roundRoot, roundRoot*roundRoot)
 
 	if int((root)+1)*(int(root)+1)-n < n-int(root)*int(root) {
 		return int((root)+1) * (int(root) + 1)
