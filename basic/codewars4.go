@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -233,18 +234,39 @@ func QueueTime(customers []int, n int) int {
 	for _, customerTime := range customers {
 		queueTime[0] += customerTime
 		sort.Ints(queueTime)
+		// fmt.Println(queueTime)
 	}
 	return queueTime[n-1]
+	//return queueTime[len(queueTime)-1]
+}
+
+func Contamination(text, char string) (s string) {
+	re := regexp.MustCompile(".")
+	replace := re.ReplaceAllString(text, char)
+	return replace
+}
+func Persistence(n int) int {
+	count := 0
+	for n%10 > 9 {
+		fmt.Println(n)
+		num := 1
+		num *= n % 10
+		n /= 10
+		count++
+	}
+	return count
 }
 
 func main() {
-	l := []int{9, 7, 5, 3, 1}
-	fmt.Println(l)
-	fmt.Println(QueueTime(l, 2))                       //.To(Equal(16))
-	fmt.Println(QueueTime([]int{}, 1))                 //.To(Equal(0))
-	fmt.Println(QueueTime([]int{1, 2, 3, 4}, 1))       //.To(Equal(10))
-	fmt.Println(QueueTime([]int{2, 2, 3, 3, 4, 4}, 2)) //.To(Equal(9))
-	fmt.Println(QueueTime([]int{1, 2, 3, 4, 5}, 100))  //.To(Equal(5))
+	fmt.Println(Persistence(39))
+
+	// l := []int{9, 7, 5, 3, 1}
+	// fmt.Println(l)
+	// fmt.Println(QueueTime(l, 2)) //.To(Equal(16))
+	// // fmt.Println(QueueTime([]int{}, 1))                 //.To(Equal(0))
+	// // fmt.Println(QueueTime([]int{1, 2, 3, 4}, 1))       //.To(Equal(10))
+	// // fmt.Println(QueueTime([]int{2, 2, 3, 3, 4, 4}, 2)) //.To(Equal(9))
+	// fmt.Println(QueueTime([]int{1, 2, 3, 4, 5}, 100)) //.To(Equal(5))
 
 	//
 	//	fmt.Println(TowerBuilder(0))
