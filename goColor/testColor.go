@@ -11,12 +11,12 @@ import (
 // A lasy way to print with color
 func pl(format string, a ...interface{}) {
 	colorize := goColor.Pl(format, a...)
-	fmt.Println(colorize)
+	fmt.Print(colorize)
 }
 
 func ll(text string) {
 	colorized := goColor.Colorize(text)
-	fmt.Println(colorized)
+	fmt.Print(colorized)
 }
 
 // print colorized textString
@@ -64,6 +64,7 @@ func main() {
 	pc("This is a cyan text", "cyan")
 	pc("This is a white text", "white")
 	pc("This is default color", "")
+	pc("This is a orange text", "orange")
 	blue("more blue!")
 	orange("more orange!")
 }
