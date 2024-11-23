@@ -7,7 +7,7 @@ import (
 	"golang.org/x/text/number"
 )
 
-// A lasy way to print with color
+// A lasy way to fmt.Printf() with color
 func pl(format string, a ...interface{}) {
 	colorize := goColor.Pl(format, a...)
 	fmt.Print(colorize)
@@ -25,14 +25,14 @@ func orange(text string) {
 }
 
 func main() {
-	pl("This is a %s and this. is %s. testar", "warning", "error")
+	pl("This is a %s and this. is %s. ", "warning", "error")
 
 	// print type of numbers
 	numbers := number.Decimal("0987654321")
-	pl("This is numbers 1234567890. %T", numbers)
+	pl("This is numbers ( 1234567890 ). This is numbers ( 1234567890 ).%T", numbers)
 
 	// test many values
-	// pl("%v %v %v %v %v %v %v", "a", "2", "c", "4", "e", "6", "g")
+	pl("%v %v %v %v %v %v %v", "a", "2", "c", "4", "e", "6", "g")
 
 	//test colorize string
 	pc("This is a blue text", "blue")

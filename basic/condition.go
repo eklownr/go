@@ -1,8 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
+
+	goColor.color.Pl("This is numbers ( 0123456789 ).  %d", 9876543210)
+
 	printPrimes(20)
 }
 
