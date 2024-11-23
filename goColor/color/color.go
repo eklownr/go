@@ -6,6 +6,12 @@ import (
 	"strings"
 )
 
+// replace fmt.Printf(string, multiple values)
+// with colorized text
+func Pl(s string, value ...interface{}) string {
+	return Colorize(fmt.Sprintf(s+"\n", value...))
+}
+
 // colorize: text=Cyan, numbers=Green, special char and error=Red
 func Colorize(text string) string {
 	t := strings.Split(text, " ")
@@ -24,33 +30,30 @@ func Colorize(text string) string {
 	return strings.Join(t, " ")
 }
 
+// print one color for one string
 func PrintColor(text string, color string) {
 	switch color {
 	case "red":
-		fmt.Printf("\033[31m%s\033[0m", text)
+		fmt.Printf("\033[31m%s\033[0m\n", text)
 	case "green":
-		fmt.Printf("\033[32m%s\033[0m", text)
+		fmt.Printf("\033[32m%s\033[0m\n", text)
 	case "yellow":
-		fmt.Printf("\033[33m%s\033[0m", text)
+		fmt.Printf("\033[33m%s\033[0m\n", text)
 	case "blue":
-		fmt.Printf("\033[34m%s\033[0m", text)
+		fmt.Printf("\033[34m%s\033[0m\n", text)
 	case "magenta":
-		fmt.Printf("\033[35m%s\033[0m", text)
+		fmt.Printf("\033[35m%s\033[0m\n", text)
 	case "cyan":
-		fmt.Printf("\033[36m%s\033[0m", text)
+		fmt.Printf("\033[36m%s\033[0m\n", text)
 	case "white":
-		fmt.Printf("\033[37m%s\033[0m", text)
-	default:
-		fmt.Printf("\033[37m%s\033[0m", text)
+		fmt.Printf("\033[37m%s\033[0m\n", text)
+	case "orange":
+		fmt.Printf("\033[38:5:166m%s\033[0m\n", text)
+	default: // white
+		fmt.Printf("\033[37m%s\033[0m\n", text)
 	}
 }
 
-// replace fmt.Printf(string, multiple values)
-func Pl(s string, value ...interface{}) string {
-	return Colorize(fmt.Sprintf(s+"\n", value...))
-}
-
-// / print coloorized text ///
 // print red text
 func Pr(format string, a ...interface{}) string {
 	return fmt.Sprintf("\033[31m"+format+"\033[0m", a...)

@@ -19,12 +19,18 @@ func ll(text string) {
 	fmt.Println(colorized)
 }
 
-// print purple text
+// print colorized textString
 func Purple(s string) {
-	fmt.Printf("\033[35m%s\033[0m", s)
+	fmt.Printf("\033[35m%s\033[0m\n", s)
 }
 func pc(text string, color string) {
 	goColor.PrintColor(text, color)
+}
+func blue(text string) {
+	goColor.PrintColor(text, "blue")
+}
+func orange(text string) {
+	goColor.PrintColor(text, "orange")
 }
 
 func main() {
@@ -50,4 +56,14 @@ func main() {
 	ll("asdfasdf, (1234) () *** <> abcdefghijklmnopqrstuvwxyzåäö")
 
 	Purple("This is a purple text")
+	pc("This is a blue text", "blue")
+	pc("This is a red text", "red")
+	pc("This is a green text", "green")
+	pc("This is a yellow text", "yellow")
+	pc("This is a magenta text", "magenta")
+	pc("This is a cyan text", "cyan")
+	pc("This is a white text", "white")
+	pc("This is default color", "")
+	blue("more blue!")
+	orange("more orange!")
 }
