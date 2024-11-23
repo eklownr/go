@@ -25,7 +25,7 @@ func orange(text string) {
 }
 
 func main() {
-	pl("This is a %s and this is %s.", "warning", "error")
+	pl("This is a %s and this. is %s. testar", "warning", "error")
 
 	// print type of numbers
 	numbers := number.Decimal("0987654321")

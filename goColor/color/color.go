@@ -21,7 +21,7 @@ func Colorize(text string) string {
 			t[i] = "\033[32m" + t[i] + "\033[0m"
 		}
 		// if 'error' or 'warning' or 'not a letter'
-		if t[i] == "error" || t[i] == "warning" || regexp.MustCompile(`[^a-zA-Z+:+,+.+!+å+ä+ö+\n]`).MatchString(t[i]) {
+		if t[i] == "error" || t[i] == "error." || t[i] == "warning" || regexp.MustCompile(`[^a-zA-Z+:+,+.+!+å+ä+ö+\n]`).MatchString(t[i]) {
 			t[i] = "\033[31m" + t[i] + "\033[0m"
 		}
 		// Cyan text
