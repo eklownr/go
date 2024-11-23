@@ -13,11 +13,6 @@ func pl(format string, a ...interface{}) {
 	fmt.Print(colorize)
 }
 
-func ll(text string) {
-	colorized := goColor.Colorize(text)
-	fmt.Print(colorized)
-}
-
 // print colorized textString
 func pc(text string, color string) {
 	goColor.PrintColor(text, color)
@@ -37,7 +32,7 @@ func main() {
 	pl("This is numbers 1234567890. %T", numbers)
 
 	// test many values
-	pl("%v %v %v %v %v %v %v", "a", "b", "c", "d", "e", "f", "g")
+	// pl("%v %v %v %v %v %v %v", "a", "2", "c", "4", "e", "6", "g")
 
 	//test colorize string
 	pc("This is a blue text", "blue")
