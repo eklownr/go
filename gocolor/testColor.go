@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	goColor "goColor/color"
+	goColor "gocolor/color"
 
 	"golang.org/x/text/number"
 )

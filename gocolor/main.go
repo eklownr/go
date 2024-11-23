@@ -22,7 +22,7 @@ func main() {
 	//red("Warning\n")
 
 	//blue := color.New(color.FgHiBlue).PrintfFunc()
-	Pl("This message is cyan and a new line ")
+	//Pl("This message is cyan and a new line ")
 	//	Pl("This message is cyan with extra string %s", "...extra...")
 
 	yellow := color.New(color.FgYellow).SprintFunc()
