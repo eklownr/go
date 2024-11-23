@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/eklownr/go/gocolor"
 )
 
 func main() {
 
-	goColor.color.Pl("This is numbers ( 0123456789 ).  %d", 9876543210)
+	gocolor.Pl("This is numbers ( 0123456789 ).  %d", 9876543210)
 
 	printPrimes(20)
 }
