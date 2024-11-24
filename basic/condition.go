@@ -6,7 +6,7 @@ import (
 
 func main() {
 
-	gocolor.color.Pl("This is numbers ( 0123456789 ).  %d", 9876543210)
+	fmt.Println("This is numbers ( 0123456789 ).  %d", 9876543210)
 
 	printPrimes(20)
 }
