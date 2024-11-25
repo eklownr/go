@@ -2,4 +2,4 @@ module basic
 
 go 1.23.3
 
-replace github.com/eklownr/go => ../go
+require github.com/eklownr/pretty v1.0.0
