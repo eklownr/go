@@ -29,7 +29,9 @@ func main() {
 
 	// print type of numbers
 	numbers := number.Decimal("0987654321")
-	pl("This is numbers ( 1234567890 ). This is numbers ( 1234567890 ).%T", numbers)
+	pl("This! is numbers (1234567890). This is numbers ( 1234567890 ). %v som text red!! ", "error")
+	pl(" special char: ! !! ? . , + -  _ / #  ( )  {} numbers: %v", numbers)
+	pl("1 + 1 = 2; 2+2=4")
 
 	// test many values
 	pl("%v %v %v %v %v %v %v", "a", "2", "c", "4", "e", "6", "g")

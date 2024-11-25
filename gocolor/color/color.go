@@ -12,20 +12,23 @@ func Pl(s string, value ...interface{}) string {
 	return Colorize(fmt.Sprintf(s+"\n", value...))
 }
 
-// colorize: text=Cyan, numbers=Green, special char and error=Red
+// colorize: text=Cyan, numbers=Green, if '!!' or 'error'=Red
 func Colorize(text string) string {
 	t := strings.Split(text, " ")
 	for i := range t {
-		// numbers t[i] = "\033[32m" + t[i] + "\033[0m"
+		// numbers t[i] = "orange"
 		if t[i] == "0" || regexp.MustCompile(`\d+`).MatchString(t[i]) || regexp.MustCompile(`\d+.`).MatchString(t[i]) {
-			t[i] = "\033[32m" + t[i] + "\033[0m"
+			t[i] = "\033[32m" + t[i] + "\033[0m" // Green
 		}
-		// if 'error' or 'warning' or 'not a letter'
-		if t[i] == "error" || t[i] == "error." || t[i] == "warning" || regexp.MustCompile(`[^a-zA-Z+:+,+.+!+å+ä+ö+\n]`).MatchString(t[i]) {
-			t[i] = "\033[31m" + t[i] + "\033[0m"
+		// if 'error' or 'warning' or '!!' = Red
+		if t[i] == "error" || t[i] == "error." || t[i] == "warning" || regexp.MustCompile(`[!!]`).MatchString(t[i]) {
+			t[i] = "\033[31m" + t[i] + "\033[0m" // Red
 		}
-		// Cyan text
-		t[i] = "\033[36m" + t[i] + "\033[0m"
+		// Special chars: ? . , + - _ / # ( ) { }
+		if t[i] == "" || regexp.MustCompile(`[^a-zA-Z+:+,+.+å+ä+ö+\n]`).MatchString(t[i]) {
+			t[i] = "\033[33m" + t[i] + "\033[0m" // Yellow
+		}
+		t[i] = "\033[36m" + t[i] + "\033[0m" // Cyan text
 	}
 	return strings.Join(t, " ")
 }
