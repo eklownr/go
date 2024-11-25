@@ -245,17 +245,18 @@ func Contamination(text, char string) (s string) {
 	replace := re.ReplaceAllString(text, char)
 	return replace
 }
-func Persistence(n int) int {
-	count := 0
-	for n%10 > 9 {
-		fmt.Println(n)
-		num := 1
-		num *= n % 10
-		n /= 10
-		count++
-	}
-	return count
-}
+
+// func Persistence(n int) int {
+// 	count := 0
+// 	for n%10 > 9 {
+// 		fmt.Println(n)
+// 		num := 1
+// 		num *= n % 10
+// 		n /= 10
+// 		count++
+// 	}
+// 	return count
+// }
 
 func main() {
 	fmt.Println(Persistence(39))
