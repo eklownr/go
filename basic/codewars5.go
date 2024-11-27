@@ -72,8 +72,21 @@ func ToAlternatingCase(str string) string {
 	return s
 }
 
+func MakeNegative(x int) int {
+	if x < 0 {
+		return x
+	}
+	return x * -1
+}
+
 func main() {
-	p(ToAlternatingCase("aA bB HELLO hello"))
+	n := -42
+	fmt.Printf("%v \n ", MakeNegative(n))
+	n = 2
+	fmt.Printf("%v \n", MakeNegative(n))
+	n = 0
+	fmt.Printf("%v \n", MakeNegative(n))
+	//p(ToAlternatingCase("aA bB HELLO hello"))
 	// p("39 gives %d expect: %d", Persistence(39), 3)
 	// p("999 gives %d expect: %d", Persistence(999), 4)
 	// p("4 gives %d expect: %d", Persistence(4), 0)
